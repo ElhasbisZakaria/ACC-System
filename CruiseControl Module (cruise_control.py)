@@ -1,0 +1,16 @@
+class PIDController:
+    def __init__(self, target_speed):
+        self.target_speed = target_speed
+        self.current_speed = 0
+
+    def update_speed(self, current_speed):
+        self.current_speed = current_speed
+        error = self.target_speed - self.current_speed
+        throttle_command = self.pid_control(error)
+        return throttle_command
+
+    def pid_control(self, error):
+        # Simplified PID control: Proportional term only for simplicity
+        Kp = 0.1  # Proportional gain
+        throttle_command = Kp * error
+        return throttle_command
