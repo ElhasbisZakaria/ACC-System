@@ -1,0 +1,20 @@
+class ThrottleControl:
+    def __init__(self):
+        self.power_output = 0  # Power adjustment to engine
+
+    def adjust_throttle(self, throttle_command):
+        self.power_output = throttle_command
+        if self.power_output > 0:
+            print(f"Accelerating with power output: {self.power_output}")
+        else:
+            print(f"Decelerating with power output: {self.power_output}")
+
+
+class SpeedSensor:
+    def __init__(self):
+        self.current_speed = 0
+
+    def update_speed(self):
+        # For simulation purposes, we simulate the car's current speed
+        self.current_speed += 1  # Simulating speed increase
+        return self.current_speed
