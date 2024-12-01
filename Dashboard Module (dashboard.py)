@@ -1,0 +1,7 @@
+class Dashboard:
+    def __init__(self):
+        self.speed_display = 0
+
+    def display_speed(self, current_speed, target_speed):
+        self.speed_display = current_speed
+        print(f"Current Speed: {current_speed} km/h | Target Speed: {target_speed} km/h")
