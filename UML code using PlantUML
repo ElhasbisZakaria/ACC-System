@@ -1,0 +1,39 @@
+@startuml
+skinparam rectangle {
+    BackgroundColor White
+    BorderColor Black
+}
+
+rectangle "Driver" {
+    rectangle "Set Target Speed" as SetTargetSpeed
+}
+
+rectangle "CruiseControl" {
+    rectangle "PID Controller" as PIDController
+}
+
+rectangle "Car" {
+    rectangle "Throttle Control" as ThrottleControl
+    rectangle "Speed Sensor" as SpeedSensor
+}
+
+rectangle "Dashboard" {
+    rectangle "Speed Display" as SpeedDisplay
+}
+
+SetTargetSpeed -> PIDController : Target Speed
+PIDController -> ThrottleControl : Throttle Command
+ThrottleControl -> SpeedSensor : Current Speed
+SpeedSensor -> PIDController : Feedback (Current Speed)
+SpeedSensor -> SpeedDisplay : Speed Data
+
+note right of PIDController
+PID Controller adjusts throttle
+based on speed error
+end note
+
+note bottom of SpeedSensor
+Speed Sensor provides feedback
+to CruiseControl
+end note
+@enduml
