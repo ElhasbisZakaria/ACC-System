@@ -1,0 +1,7 @@
+class Driver:
+    def __init__(self):
+        self.target_speed = 0  # in km/h
+
+    def set_target_speed(self, speed):
+        self.target_speed = speed
+        print(f"Target speed set to: {self.target_speed} km/h")
