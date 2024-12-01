@@ -1,0 +1,23 @@
+from driver import Driver
+from cruise_control import PIDController
+from car import ThrottleControl, SpeedSensor
+from dashboard import Dashboard
+
+# Initialize all components
+driver = Driver()
+car_throttle = ThrottleControl()
+speed_sensor = SpeedSensor()
+dashboard = Dashboard()
+
+# Set target speed
+driver.set_target_speed(100)
+
+# Initialize Cruise Control with the target speed
+cruise_control = PIDController(driver.target_speed)
+
+# Simulate the car's operation
+for _ in range(10):  # Simulate 10 cycles of speed adjustment
+    current_speed = speed_sensor.update_speed()
+    throttle_command = cruise_control.update_speed(current_speed)
+    car_throttle.adjust_throttle(throttle_command)
+    dashboard.display_speed(current_speed, driver.target_speed)
